@@ -14,7 +14,7 @@ A simple Python package template with standard structure and best practices.
 
 ## Installation
 
-This step is required for the tests to run without import errors.
+This step is required for the tests to run without import errors, and to run as a module from the root directory (see below).
 
 ```bash
 uv pip install -e .
