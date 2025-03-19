@@ -1,6 +1,11 @@
 import argparse
 from typing import List, Optional
 
+from mypackage.logging import get_logger
+
+# Get module-specific logger using __name__
+logger = get_logger(__name__)
+
 
 def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
     """Parse command-line arguments.
@@ -11,6 +16,7 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
     Returns:
         Parsed arguments namespace
     """
+    logger.debug("Parsing command line arguments")
     parser = argparse.ArgumentParser(
         prog="mypackage",
         description="Add two numbers together",

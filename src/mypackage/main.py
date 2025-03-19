@@ -3,8 +3,11 @@ import sys
 from typing import List, Optional
 
 from .app import add_numbers, format_result
-from .logger import setup_logger
+from mypackage.logging import configure_logging, get_logger
 from mypackage.cli import parse_args
+
+# Get module-specific logger using __name__
+logger = get_logger(__name__)
 
 
 def main(args: Optional[List[str]] = None) -> int:
@@ -18,9 +21,9 @@ def main(args: Optional[List[str]] = None) -> int:
     """
     parsed_args = parse_args(args)
 
-    # Set up logging with the specified level
+    # Configure logging with the specified level
     log_level = getattr(logging, parsed_args.log_level)
-    logger = setup_logger(level=log_level)
+    configure_logging(level=log_level)
 
     try:
         logger.debug(f"Processing arguments: {parsed_args}")

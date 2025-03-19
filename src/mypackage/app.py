@@ -3,7 +3,10 @@
 from typing import Union, Dict, Any, Literal
 import json
 
-from .logger import logger
+from mypackage.logging import get_logger
+
+# Get module-specific logger using __name__
+logger = get_logger(__name__)
 
 OutputFormat = Literal["text", "json"]
 
