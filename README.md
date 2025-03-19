@@ -30,27 +30,12 @@ This creates a link to your source code, making the package importable from anyw
 
 ```bash
 # Basic usage
-mypackage 1 2
+python -m mypackage 1 2
 
 # JSON output
-mypackage 1 2 --format json
+python -m mypackage 1 2 --format json
 
 # With custom log level
-mypackage 1 2 --log-level DEBUG
-```
-
-### As a Python Module
-
-```bash
-python -m mypackage 1 2
-```
-
-### As a Library
-
-```python
-from mypackage.core import add_numbers
-
-result = add_numbers(1, 2)
-print(result)  # 3
+python -m mypackage 1 2 --log-level DEBUG
 ```
 

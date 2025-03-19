@@ -1,6 +1,7 @@
 """Tests for the command-line interface."""
 
-from mypackage.cli import parse_args, main
+from mypackage.cli import parse_args
+from mypackage.main import main
 
 
 def test_parse_args() -> None:

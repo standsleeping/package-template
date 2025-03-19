@@ -1,7 +1,7 @@
 """Tests for core functionality."""
 
 import json
-from mypackage.core import add_numbers, format_result
+from mypackage.app import add_numbers, format_result
 
 
 def test_add_numbers_integers() -> None:
