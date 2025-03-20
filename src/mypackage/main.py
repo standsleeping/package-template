@@ -2,7 +2,7 @@ import logging
 import sys
 from typing import List, Optional
 
-from .app import add_numbers, format_result
+from mypackage.app import add_numbers, format_result
 from mypackage.logging import configure_logging, get_logger
 from mypackage.cli import parse_args
 

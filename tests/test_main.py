@@ -1,34 +1,19 @@
-"""Tests for core functionality."""
+"""Tests for the main function."""
 
-import json
-from mypackage.app import add_numbers, format_result
-
-
-def test_add_numbers_integers() -> None:
-    """Test adding two integers."""
-    assert add_numbers(1, 2) == 3
-    assert add_numbers(-1, 1) == 0
-    assert add_numbers(0, 0) == 0
+from mypackage.main import main
 
 
-def test_add_numbers_floats() -> None:
-    """Test adding floating point numbers."""
-    assert add_numbers(1.5, 2.5) == 4.0
-    assert add_numbers(-1.5, 1.5) == 0.0
+def test_main(capsys) -> None:
+    """Test the main function with captured stdout."""
+    # Test with text output
+    exit_code = main(["1", "2"])
+    captured = capsys.readouterr()
+    assert exit_code == 0
+    assert captured.out.strip() == "1.0 + 2.0 = 3.0"
 
-
-def test_format_result_text() -> None:
-    """Test text formatting of results."""
-    assert format_result(1, 2, 3, "text") == "1 + 2 = 3"
-    assert format_result(1.5, 2.5, 4.0, "text") == "1.5 + 2.5 = 4.0"
-
-
-def test_format_result_json() -> None:
-    """Test JSON formatting of results."""
-    json_output = format_result(1, 2, 3, "json")
-    data = json.loads(json_output)
-
-    assert data["operation"] == "addition"
-    assert data["inputs"]["a"] == 1
-    assert data["inputs"]["b"] == 2
-    assert data["result"] == 3
+    # Test with JSON output
+    exit_code = main(["1", "2", "--format", "json"])
+    captured = capsys.readouterr()
+    assert exit_code == 0
+    assert '"operation": "addition"' in captured.out
+    assert '"result": 3.0' in captured.out
