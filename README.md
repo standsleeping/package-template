@@ -54,6 +54,7 @@ uv sync --all-groups --refresh
 uv run pytest -q
 uv run ruff check .
 uv run mypy src
+uv run ty check src
 ```
 
 If `uv.lock` changes, commit it:
